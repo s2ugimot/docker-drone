@@ -7,17 +7,16 @@ ENV DEBIAN_FRONTEND noninteractive
 
 
 # apt-get update
-RUN apt-get update
+#RUN apt-get update
 
 # install
-RUN apt-get -y --no-install-recommends install wget
-RUN apt-get -y --no-install-recommends install docker.io
+#RUN apt-get -y --no-install-recommends install docker.io
 
 # cleanup apt cache
-RUN apt-get clean all
-RUN rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+#RUN apt-get clean all
+#RUN rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-RUN wget http://downloads.drone.io/master/drone.deb
+RUN curl -O http://downloads.drone.io/master/drone.deb
 RUN dpkg -i drone.deb
 
 RUN rm -Rf /etc/service/sshd
