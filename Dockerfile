@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN curl -O http://downloads.drone.io/master/drone.deb
 RUN dpkg -i drone.deb
+RUN rm drone.deb
 
 RUN rm -Rf /etc/service/sshd
 RUN rm -Rf /etc/service/cron
