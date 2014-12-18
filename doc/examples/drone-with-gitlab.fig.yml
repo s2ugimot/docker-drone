@@ -1,5 +1,5 @@
 drone:
-  image: s2ugimot/drone
+  image: s2ugimot/drone:0.0.2
   links:
     - worker
     - gitlab
@@ -11,11 +11,11 @@ drone:
     - DRONE_WORKER_NODES=worker:2375,worker:2375
 
 worker:
-  image: s2ugimot/drone-worker
+  image: s2ugimot/drone-worker:0.0.1
   privileged: true
 
 gitlab:
-  image: sameersbn/gitlab
+  image: sameersbn/gitlab:7.5.3
   links:
     - postgresql
     - redis:redisio
@@ -23,6 +23,7 @@ gitlab:
     - "20080:80"
     - "20022:22"
   environment:
+    - GITLAB_HOST=192.168.59.103 # REPLACE WITH YOUR DOCKER HOST IP
     - GITLAB_PORT=20080
     - GITLAB_SSH_PORT=20022
 
